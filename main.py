@@ -6,22 +6,22 @@ import os
 
 app = FastAPI()
 
-load_dotenv()
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-    "https://adiincode-ai.github.io",
-    "http://localhost:5500",
-    "http://127.0.0.1:5500"
-    ]
-    allow_credentials=True,
+        "https://adiincode-ai.github.io",
+        "https://adiincode-ai.github.io/",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
+    ],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+load_dotenv()
 API_KEY=os.getenv("OPENWEATHER_API_KEY")
+
 
 
 @app.get("/")
