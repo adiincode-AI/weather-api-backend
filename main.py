@@ -5,18 +5,22 @@ import requests
 import os
 
 app = FastAPI()
+
 load_dotenv()
 
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://adiincode-ai.github.io/"
-    ],
+    "https://adiincode-ai.github.io",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500"
+    ]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 API_KEY=os.getenv("OPENWEATHER_API_KEY")
 
 
@@ -28,7 +32,7 @@ def home():
 def get_weather(city_name:str):
 
     url = (
-        f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&unit=metric"
+        f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units=metric"
     )
 
     response = requests.get(url)
