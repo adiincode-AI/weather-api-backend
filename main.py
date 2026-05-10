@@ -10,12 +10,13 @@ load_dotenv()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://adiincode-ai.github.io/"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 API_KEY=os.getenv("OPENWEATHER_API_KEY")
 
 
